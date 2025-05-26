@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUKEN GAME</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fef7f0 0%, #f1f8e9 100%);
+            min-height: 100vh;
+            color: #8d6e63;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+.main-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 4em;
+    font-weight: 700;
+    background: linear-gradient(45deg, #f48fb1, #81c784);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+    text-shadow: 0px 4px 8px rgba(244, 143, 177, 0.2);
+}
+
+        .subtitle {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3em;
+            color: #ad5194;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .category {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(244, 143, 177, 0.15);
+            border: 3px solid rgba(244, 143, 177, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .category:nth-child(1)::before {
+            background: linear-gradient(90deg, #f48fb1, #f8bbd9);
+        }
+
+        .category:nth-child(2)::before {
+            background: linear-gradient(90deg, #66bb6a, #81c784);
+        }
+
+        .category:nth-child(3)::before {
+            background: linear-gradient(90deg, #ffab40, #ffd54f);
+        }
+
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(244, 143, 177, 0.25);
+            border-color: rgba(244, 143, 177, 0.3);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .category-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .category-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.9em;
+            font-weight: 700;
+            color: #7b5e57;
+            letter-spacing: 0.03em;
+        }
+
+        .category-description {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            color: #a0877c;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .game-item {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(244, 143, 177, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244, 143, 177, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .game-item:hover::before {
+            left: 100%;
+        }
+
+        .game-item:hover {
+            background: rgba(244, 143, 177, 0.1);
+            border-color: rgba(244, 143, 177, 0.4);
+            transform: translateY(-4px);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 8px 24px rgba(244, 143, 177, 0.2);
+        }
+
+        .game-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #5d4037;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+        }
+
+        .game-description {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85em;
+            color: #8d6e63;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            border-top: 3px solid rgba(244, 143, 177, 0.1);
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .footer-text {
+            font-family: 'Comfortaa', cursive;
+            color: #ad5194;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.8em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .category-title {
+                font-size: 1.6em;
+            }
+            
+            .category-description {
+                font-size: 0.9em;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                padding: 25px;
+                border-radius: 25px;
+            }
+            
+            .game-title {
+                font-size: 1em;
+            }
+            
+            .game-description {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">JUKEN GAME</h1>
+        </div>
+
+        <div class="categories">
+            <!-- 学力アゲアゲ -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">📚</div>
+                    <h2 class="category-title">学力アゲアゲ</h2>
+                </div>
+                <p class="category-description">勉強が楽しくなる！知識をゲットして成績UP間違いなし！</p>
+                <div class="game-grid">
+                    <a href="#" class="game-item">
+                        <div class="game-title">🔢 計算王への道</div>
+                        <div class="game-description">四則計算をマスターして計算スピードアップ！</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">✏️ 漢字マスター</div>
+                        <div class="game-description">読み書きをゲームで楽しく覚えよう</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🌍 都道府県クエスト</div>
+                        <div class="game-description">47都道府県を完全制覇！</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🇺🇸 英単語バトル</div>
+                        <div class="game-description">単語力を鍛えて英語力アップ</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🧪 理科実験室</div>
+                        <div class="game-description">実験を通して科学を学ぼう</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🏛️ 歴史タイムトラベル</div>
+                        <div class="game-description">時代を旅して歴史を体験</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">📐 図形パズル</div>
+                        <div class="game-description">図形の性質を楽しく学習</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 脳トレ -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🧠</div>
+                    <h2 class="category-title">脳トレ</h2>
+                </div>
+                <p class="category-description">記憶力・集中力・判断力を楽しくレベルアップ！</p>
+                <div class="game-grid">
+                    <a href="#" class="game-item">
+                        <div class="game-title">🎯 記憶力チャレンジ</div>
+                        <div class="game-description">どこまで覚えられるかな？</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">⚡ 瞬間判断ゲーム</div>
+                        <div class="game-description">素早い判断力を鍛えよう</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🔍 集中力テスト</div>
+                        <div class="game-description">君の集中力はどのくらい？</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🧩 パターン認識</div>
+                        <div class="game-description">規則性を見つけて脳を活性化</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🎲 論理パズル</div>
+                        <div class="game-description">論理的思考力をゲットだぜ</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">👁️ 反射神経ゲーム</div>
+                        <div class="game-description">反応スピードを極限まで鍛える</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- きゅうけい -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-icon">🎮</div>
+                    <h2 class="category-title">きゅうけい</h2>
+                </div>
+                <p class="category-description">勉強の合間にリフレッシュ！楽しい時間で頭をスッキリ♪</p>
+                <div class="game-grid">
+                    <a href="#" class="game-item">
+                        <div class="game-title">🟦 ぷよぷよ風パズル</div>
+                        <div class="game-description">4つ繋げて消していこう</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🏃 ジャンプアクション</div>
+                        <div class="game-description">キャラを操作してゴールを目指せ</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🎵 音楽ゲーム</div>
+                        <div class="game-description">リズムに合わせてタップしよう</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🎨 お絵描きゲーム</div>
+                        <div class="game-description">自由に絵を描いてリラックス</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🐍 スネークゲーム</div>
+                        <div class="game-description">昔懐かしのヘビゲーム</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🎯 シューティング</div>
+                        <div class="game-description">的を狙ってストレス発散</div>
+                    </a>
+                    <a href="#" class="game-item">
+                        <div class="game-title">🧘 リラックスタイム</div>
+                        <div class="game-description">深呼吸して心を落ち着けよう</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">JUKEN CAMP presents</p>
+        </div>
+    </div>
+</body>
+</html>
