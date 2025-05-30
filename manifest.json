@@ -1,0 +1,26 @@
+{
+  "name": "JUKEN GAME - 受験ゲーム総合サイト",
+  "short_name": "JUKEN GAME",
+  "description": "楽しく学べる受験ゲームの総合サイト",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef7f0",
+  "theme_color": "#f48fb1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/juken-game-icon-large.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/juken-game-icon-small.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "games", "productivity"],
+  "lang": "ja"
+}
