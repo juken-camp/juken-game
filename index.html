@@ -143,6 +143,7 @@
         .floating-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, #f48fb1 0%, #81c784 100%);
             color: white;
             text-decoration: none;
@@ -152,12 +153,14 @@
             transition: all 0.3s ease;
             font-family: 'Quicksand', sans-serif;
             font-weight: 600;
-            font-size: 0.85em;
+            font-size: 0.8em;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            width: 170px;
+            min-width: 170px;
         }
 
         .floating-btn::before {
@@ -190,6 +193,7 @@
             font-size: 1.3em;
             margin-right: 8px;
             animation: icon-pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes icon-pulse {
@@ -198,17 +202,9 @@
         }
 
         .floating-tooltip {
-            white-space: nowrap;
             letter-spacing: 0.02em;
-        }
-
-        /* 「友だちに教える」と「開発者に質問する」のテキストサイズ調整 */
-        .floating-share-btn .floating-tooltip {
-            font-size: 0.75em;
-        }
-
-        .floating-contact-btn .floating-tooltip {
-            font-size: 0.8em;
+            text-align: center;
+            flex: 1;
         }
 
         .container {
@@ -517,20 +513,14 @@
 
             .floating-btn {
                 padding: 10px 16px;
-                font-size: 0.8em;
+                font-size: 0.75em;
+                width: 150px;
+                min-width: 150px;
             }
 
             .floating-icon {
                 font-size: 1.2em;
                 margin-right: 6px;
-            }
-
-            .floating-share-btn .floating-tooltip {
-                font-size: 0.7em;
-            }
-
-            .floating-contact-btn .floating-tooltip {
-                font-size: 0.75em;
             }
         }
 
@@ -571,21 +561,20 @@
             }
 
             .floating-btn {
-                padding: 8px 14px;
-                font-size: 0.75em;
+                padding: 8px 12px;
+                font-size: 0.7em;
                 border-radius: 20px;
+                width: 130px;
+                min-width: 130px;
+            }
+
+            .floating-icon {
+                font-size: 1.1em;
+                margin-right: 5px;
             }
 
             .floating-tooltip {
                 font-size: 0.9em;
-            }
-
-            .floating-share-btn .floating-tooltip {
-                font-size: 0.65em;
-            }
-
-            .floating-contact-btn .floating-tooltip {
-                font-size: 0.7em;
             }
         }
     </style>
