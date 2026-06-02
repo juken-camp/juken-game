@@ -658,8 +658,8 @@
     <!-- フローティングボタン -->
     <div class="floating-share-btn">
         <div class="floating-btn" id="floatingShareBtn">
-            <span class="floating-icon">📤</span>
-            <span class="floating-tooltip">友だちに教える</span>
+            <span class="floating-icon">📌</span>
+            <span class="floating-tooltip">SnapInを使う</span>
         </div>
     </div>
 
@@ -1198,7 +1198,7 @@
                 this.getBoundingClientRect().top + this.getBoundingClientRect().height / 2,
                 5
             );
-            shareJukenGame();
+            window.open('https://snapin-jukencamp.vercel.app/', '_blank');
         });
 
         document.getElementById('floatingContactBtn').addEventListener('click', function() {
