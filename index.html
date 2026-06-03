@@ -211,7 +211,7 @@
 
         /* 個別のテキストサイズ調整 */
         .floating-share-btn .floating-tooltip {
-            font-size: 0.65em;
+            font-size: 0.55em;
         }
 
         .floating-contact-btn .floating-tooltip {
@@ -572,7 +572,7 @@
             }
 
             .floating-share-btn .floating-tooltip {
-                font-size: 0.6em;
+                font-size: 0.5em;
             }
 
             .floating-contact-btn .floating-tooltip {
@@ -638,7 +638,7 @@
             }
 
             .floating-share-btn .floating-tooltip {
-                font-size: 0.55em;
+                font-size: 0.45em;
             }
 
             .floating-contact-btn .floating-tooltip {
@@ -658,7 +658,8 @@
     <!-- フローティングボタン -->
     <div class="floating-share-btn">
         <div class="floating-btn" id="floatingShareBtn">
-            <span class="floating-tooltip">SnapInを使う</span>
+            <span class="floating-icon">📤</span>
+            <span class="floating-tooltip">友だちに教える</span>
         </div>
     </div>
 
@@ -702,6 +703,10 @@
                     <a href="https://quick-quiz-timer.vercel.app/" class="game-item">
                         <div class="game-title">⏰ QUICK QUIZ TIMER（1,669問）</div>
                         <div class="game-description">QUICK QUIZのドキドキタイマーバージョン！</div>
+                    </a>
+                    <a href="https://snapin-jukencamp.vercel.app/" class="game-item" target="_blank">
+                        <div class="game-title">📝 SnapIn（※ メモアプリ）</div>
+                        <div class="game-description">塾の現場から生まれた、受験生から大人まで超便利アプリ！</div>
                     </a>
                 </div>
             </div>
@@ -1197,7 +1202,7 @@
                 this.getBoundingClientRect().top + this.getBoundingClientRect().height / 2,
                 5
             );
-            window.open('https://snapin-jukencamp.vercel.app/', '_blank');
+            shareJukenGame();
         });
 
         document.getElementById('floatingContactBtn').addEventListener('click', function() {
