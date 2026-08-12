@@ -297,6 +297,10 @@
             opacity: 0.9;
         }
 
+        .header .subtitle {
+            margin-bottom: 0;
+        }
+
         .categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -476,6 +480,107 @@
             letter-spacing: 0.01em;
         }
 
+        /* トップのゲーム更新情報（高さ固定・内部スクロール） */
+        .game-updates {
+            max-width: 760px;
+            margin: 48px auto 0;
+            padding: 12px 14px 10px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.82);
+            border: 2px solid rgba(244, 143, 177, 0.18);
+            border-radius: 18px;
+            box-shadow: 0 7px 24px rgba(244, 143, 177, 0.12);
+            backdrop-filter: blur(10px);
+        }
+
+        .game-updates-head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .game-updates-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 9px;
+            color: white;
+            background: linear-gradient(135deg, #f48fb1, #81c784);
+            border-radius: 999px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.62em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .game-updates-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.86em;
+            font-weight: 700;
+            color: #7b5e57;
+            letter-spacing: 0.04em;
+        }
+
+        .game-updates-list {
+            max-height: 112px;
+            margin: 0;
+            padding: 0 8px 0 0;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            list-style: none;
+            scrollbar-width: thin;
+            scrollbar-color: #d6a7bf transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .game-updates-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .game-updates-list::-webkit-scrollbar-thumb {
+            background: #d6a7bf;
+            border-radius: 999px;
+        }
+
+        .game-updates-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .game-updates-list li {
+            display: grid;
+            grid-template-columns: 6.8em minmax(0, 1fr);
+            gap: 10px;
+            padding: 7px 0;
+            border-top: 1px dashed rgba(141, 110, 99, 0.22);
+            font-size: 0.78em;
+            line-height: 1.45;
+        }
+
+        .game-updates-list li:first-child {
+            border-top: 0;
+        }
+
+        .game-updates-list time {
+            color: #a0877c;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9em;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .game-updates-list a {
+            color: #6d4c41;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .game-updates-list a:hover {
+            color: #ad5194;
+            text-decoration: underline;
+        }
+
         .footer {
             text-align: center;
             padding: 40px 0 30px;
@@ -540,6 +645,23 @@
             
             .game-description {
                 font-size: 0.68em;
+            }
+
+            .game-updates {
+                margin-top: 40px;
+                padding: 10px 11px 8px;
+            }
+
+            .game-updates-list {
+                max-height: 104px;
+                padding-right: 5px;
+            }
+
+            .game-updates-list li {
+                grid-template-columns: 6.1em minmax(0, 1fr);
+                gap: 7px;
+                padding: 6px 0;
+                font-size: 0.72em;
             }
 
             .category-icon {
@@ -693,6 +815,19 @@
         <div class="header">
             <h1 class="main-title" id="mainTitle"><br>JUKEN GAME</h1>
             <p class="subtitle">塾の先生がつくった受験生のクイズと教養</p>
+
+            <aside class="game-updates" aria-label="ゲーム更新情報">
+                <div class="game-updates-head">
+                    <span class="game-updates-badge">NEW</span>
+                    <b class="game-updates-title">ゲーム更新情報</b>
+                </div>
+                <ul class="game-updates-list" tabindex="0" aria-label="ゲームの更新履歴。上下にスクロールできます">
+                    <li><time datetime="2026-08-12">2026.08.12</time><a href="https://the100-world.vercel.app/">「The 100 世界の歴史を動かした100人」を追加しました</a></li>
+                    <li><time datetime="2026-08-08">2026.08.08</time><a href="https://modorenai-history.vercel.app/">「もどれない世界史」を追加しました</a></li>
+                    <li><time datetime="2026-08-02">2026.08.02</time><a href="https://english-grammar-flashcards.vercel.app/">「英文法フラッシュカード」を追加しました</a></li>
+                    <li><time datetime="2026-07-26">2026.07.26</time><a href="https://reading-master.vercel.app">「読解マスター」をバージョンアップしました</a></li>
+                </ul>
+            </aside>
         </div>
 
         <div class="categories">
